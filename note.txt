@@ -1,0 +1,6 @@
+responses:
+0 - Large
+1 - Medium
+2 - Small
+3 - Not Bottle
+4 - Camera Failed

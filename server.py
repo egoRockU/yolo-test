@@ -52,6 +52,7 @@ def vendo_serial_listen():
     while True:
         if vendo_ser.in_waiting:
             data = vendo_ser.readline().decode('utf8').strip()
+            # for detected objects for yolo to process
             if 'OBJECT DETECTED!' in data:
                 image_arr = capture_image()
                 if image_arr is None:
@@ -77,6 +78,7 @@ def vendo_serial_listen():
                             vendo_ser.write(res.encode())
                             print(data_buffer)
             
+            # when liters are send, send a response to microcontroller to open pumpers.
             if 'TOTAL LITERS:' in data:
                 liters = int(data.split(':')[-1].strip())
                 res = "res: " + str(liters) + "\n"
